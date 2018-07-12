@@ -1,11 +1,11 @@
-# mpack.spec
+# mlapack.spec
 
 %{!?_pkgdocdir: %global _pkgdocdir %%{_docdir}/%{name}}
 
-Name:           mpack
+Name:           mlapack
 Version:        @PACKAGE_VERSION@
 Release:        1%{?dist}
-Summary:        Multiple precision linear algebra package
+Summary:        MPACK - Multiple precision linear algebra package
 
 Vendor:         Maho Nakata <maho@riken.jp>
 #Packager:       Gregor Entzian <entzian@tbi.univie.ac.at>
@@ -14,7 +14,7 @@ Group:          -
 License:        The MPACK is a free software (BSD-2-Clause style license with original license by LAPACK)
 URL:            https://github.com/nakatamaho/mpack
 Source0:        mpack-%{version}.tar.gz
-BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+BuildRoot:      %(mktemp -ud %{_tmppath}/mpack-%{version}-%{release}-XXXXXX)
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -141,8 +141,8 @@ find %{buildroot} -type f -name '*.la' -delete
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -n mpack-devel -p /sbin/ldconfig
-%postun -n mpack-devel -p /sbin/ldconfig
+%post -n mlapack-devel -p /sbin/ldconfig
+%postun -n mlapack-devel -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
@@ -157,6 +157,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*.*.*
 
 %{_includedir}/mpack
-%{_libdir}/pkgconfig/mpack.pc
+%{_libdir}/pkgconfig/mlapack.pc
 
 

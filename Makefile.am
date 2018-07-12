@@ -73,7 +73,7 @@ endif
 noinst_HEADERS = include/mpack_debug.h include/mutils.h include/mblas.h include/mlapack.h include/mlapack_generic.h include/mpack_benchmark.h include/mpack_benchmark___float128.h include/mpack_benchmark_dd.h include/mpack_benchmark_double.h include/mpack_benchmark_gmp.h include/mpack_benchmark_mpfr.h include/mpack_benchmark_qd.h
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = mpack.pc
+pkgconfig_DATA = mlapack.pc
 
 EXTRA_DIST = \
 misc/cudalt.py \

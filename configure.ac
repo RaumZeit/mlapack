@@ -6,8 +6,8 @@ AC_INIT(mpack, 0.8.0)
 AC_SUBST([PACKAGE_DESCRIPTION], "A multiple precision version of BLAS and LAPACK")
 AC_CONFIG_HEADER(include/config.h) 
 
-AC_CONFIG_FILES([ Makefile mpack.pc ])
-AC_CONFIG_FILES([packaging/PKGBUILD packaging/mpack.spec])
+AC_CONFIG_FILES([ Makefile mlapack.pc ])
+AC_CONFIG_FILES([packaging/PKGBUILD packaging/mlapack.spec])
 
 AC_PROG_CC
 AC_PROG_CXX

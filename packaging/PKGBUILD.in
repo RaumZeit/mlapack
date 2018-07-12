@@ -1,15 +1,15 @@
 # Maintainer: Maho Nakata <maho at riken dot jp>
 # Packager: Gregor Entzian <entzian at tbi dot univie dot ac dot at>
 
-pkgbase=mpack
-pkgname=('mpack')
+pkgbase=mlapack
+pkgname=('mlapack')
 pkgver=@VERSION@
 pkgrel=1
-pkgdesc="Multiple precision linear algebra package"
+pkgdesc="MPACK - Multiple precision linear algebra package"
 arch=('x86_64' 'i686')
 license=('Custom')
 url="@PACKAGE_URL@"
-groups=('mpack')
+groups=('mlapack')
 makedepends=( 'qd'
               'gmp'
               'mpfr'
@@ -32,12 +32,12 @@ check() {
   make check
 }
 
-package_mpack() {
+package_mlapack() {
   depends=('qd'
            'gmp'
            'mpfr'
            'libmpc')
-  provides=("mpack=${pkgver}")
+  provides=("mlapack=${pkgver}")
 
 
   # install library and header files
@@ -45,7 +45,7 @@ package_mpack() {
   make DESTDIR="${pkgdir}" install
 
   # install pkg-config file
-  install -Dm644 mpack.pc "$pkgdir/usr/lib/pkgconfig/mpack.pc"
+  install -Dm644 mlapack.pc "$pkgdir/usr/lib/pkgconfig/mlapack.pc"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd ../..
