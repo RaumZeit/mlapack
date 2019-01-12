@@ -2,7 +2,7 @@ dnl
 dnl Configure for MPACK
 dnl
 
-AC_INIT(mpack, 0.8.0)
+AC_INIT(mlapack, 0.8.1)
 AC_SUBST([PACKAGE_DESCRIPTION], "A multiple precision version of BLAS and LAPACK")
 AC_CONFIG_HEADER(include/config.h) 
 
@@ -635,22 +635,51 @@ fi
 
 
 ############ select created libraries for the pkg-config ###############
+# add external libraries only if they will be installed with the package
+# otherwise add external libraries to 'REQUIRED_SYSTEM_LIBS' to use it
+# in pkg-config file
 
 PACKAGE_CREATED_LIBS=""
+REQUIRED_SYSTEM_LIBS=""
 if test x$enable_dd = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_dd -lmblas_dd"
 fi
 if test x$enable_qd = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_qd -lmblas_qd"
+  if test x$need_internal_qdlib = xyes; then
+    PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lqd"
+  else
+    REQUIRED_SYSTEM_LIBS=$REQUIRED_SYSTEM_LIBS" -lqd"
+  fi
 fi
 if test x$enable_gmp = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_gmp -lmblas_gmp"
+  if test x$need_internal_gmplib = xyes; then
+    PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lgmpxx -lgmp"
+  else
+    REQUIRED_SYSTEM_LIBS=$REQUIRED_SYSTEM_LIBS" -lgmpxx -lgmp"
+  fi
 fi
 if test x$enable_mpfr = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_mpfr -lmblas_mpfr -lmpfrcxx"
+  if test x$need_internal_mpclib = xyes; then
+    PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmpc"
+  else
+    REQUIRED_SYSTEM_LIBS=$REQUIRED_SYSTEM_LIBS" -lmpc"
+  fi
+  if test x$need_internal_mpfrlib = xyes; then
+    PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmpfr"
+  else
+    REQUIRED_SYSTEM_LIBS=$REQUIRED_SYSTEM_LIBS" -lmpfr"
+  fi
 fi
 if test x$enable_mpc = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_mpc -lmblas_mpc"
+  if test x$need_internal_mpclib = xyes; then
+    PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmpc"
+  else
+    REQUIRED_SYSTEM_LIBS=$REQUIRED_SYSTEM_LIBS" -lmpc"
+  fi
 fi
 if test x$enable___float128 = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack___float128 -lmblas___float128 -lquadmath"
@@ -662,23 +691,11 @@ if test x$enable_longdouble = x"yes"; then
   PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmlapack_longdouble -lmblas_longdouble"
 fi
 
-# add external libraries only if they will be installed with the package
-if test x$need_internal_gmplib = xyes; then
-  PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lgmpxx -lgmp"
-fi
-if test x$need_internal_qdlib = xyes; then
-  PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lqd"
-fi
-if test x$need_internal_mpfrlib = xyes; then
-  PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmpfr"
-fi
-if test x$need_internal_mpclib = xyes; then
-  PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" -lmpc"
-fi
 
 PACKAGE_CREATED_LIBS=$PACKAGE_CREATED_LIBS" ${OPENMP_CXXFLAGS}"
 
 AC_SUBST([PACKAGE_CREATED_LIBS])
+AC_SUBST([REQUIRED_SYSTEM_LIBS])
 
 ########################################################################
 

@@ -12,5 +12,5 @@ Name: @PACKAGE_NAME@
 Description: @PACKAGE_DESCRIPTION@
 Version: @PACKAGE_VERSION@
 Requires:
-Libs: -L${libdir} @PACKAGE_CREATED_LIBS@
+Libs: -L${libdir} @PACKAGE_CREATED_LIBS@ @REQUIRED_SYSTEM_LIBS@
 Cflags: -I${includedir}

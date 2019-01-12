@@ -1,3 +1,9 @@
+mlapack (0.8.1) UNRELEASED; urgency=medium
+
+  * First release under new name 'mlapack' in contrast to former package name 'mpack'
+
+ -- Ronny Lorenz <ronny@tbi.univie.ac.at>  Thu, 10 Jan 2019 15:00:00 +0100
+
 mlapack (0.8.0) UNRELEASED; urgency=medium
 
   * Initial release. (Closes: #000000)

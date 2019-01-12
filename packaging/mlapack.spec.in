@@ -8,13 +8,14 @@ Release:        1%{?dist}
 Summary:        MPACK - Multiple precision linear algebra package
 
 Vendor:         Maho Nakata <maho@riken.jp>
+Packager:       Ronny Lorenz <ronny@tbi.univie.ac.at>
 #Packager:       Gregor Entzian <entzian@tbi.univie.ac.at>
 
 Group:          -
 License:        The MPACK is a free software (BSD-2-Clause style license with original license by LAPACK)
 URL:            https://github.com/nakatamaho/mpack
-Source0:        mpack-%{version}.tar.gz
-BuildRoot:      %(mktemp -ud %{_tmppath}/mpack-%{version}-%{release}-XXXXXX)
+Source0:        http://www.tbi.univie.ac.at/RNA/packages/source/mlapack-%{version}.tar.gz
+BuildRoot:      %(mktemp -ud %{_tmppath}/mlapack-%{version}-%{release}-XXXXXX)
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -122,7 +123,7 @@ convenience. The MPACK is a free software (BSD-2-Clause style license with
 original license by LAPACK)
 
 %prep
-%setup -n mpack-%{version} -q
+%setup -n mlapack-%{version} -q
 
 %build
 %configure --docdir=%{_pkgdocdir} --enable-gmp --enable-mpfr --enable-qd --enable-dd --enable-double --enable-__float128 --enable-longdouble --enable-optimization --with-system-gmp --with-system-mpfr --with-system-mpc --with-system-qd --disable-benchmark --disable-examples --disable-reference
