@@ -24,8 +24,8 @@ before_script:
 script:
 - ./configure --enable-gmp --enable-mpfr --enable-qd --enable-dd --enable-double --enable-__float128 --enable-longdouble --enable-optimization --with-system-gmp --with-system-mpfr --with-system-mpc --with-system-qd
 #- make -j${CPU_COUNT}
-- make
-- make check
+#- make
+#- make check
 
 
 before_deploy:
