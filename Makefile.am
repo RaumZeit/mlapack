@@ -8,15 +8,15 @@ endif
 
 ACLOCAL_AMFLAGS= -I m4
 
-mpack_includedir = $(includedir)/mpack
-mpack_include_HEADERS = \
+mlapack_includedir = $(includedir)/mlapack
+mlapack_include_HEADERS = \
     include/mpack_config.h \
     include/blas.h \
     include/lapack.h \
     include/blaswrapper.h
 
 if ENABLE_DD
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/dd_complex.h \
     include/mblas_dd.h \
     include/mlapack_dd.h \
@@ -24,7 +24,7 @@ mpack_include_HEADERS += \
 endif
 
 if ENABLE_GMP
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/mblas_gmp.h \
     include/mlapack_gmp.h \
     include/mutils_gmp.h \
@@ -32,7 +32,7 @@ mpack_include_HEADERS += \
 endif
 
 if ENABLE_QD
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/mblas_qd.h \
     include/mlapack_qd.h \
     include/mutils_qd.h \
@@ -40,7 +40,7 @@ mpack_include_HEADERS += \
 endif
 
 if ENABLE_MPFR
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/mblas_mpfr.h \
     include/mlapack_mpfr.h \
     include/mutils_mpfr.h \
@@ -49,21 +49,21 @@ mpack_include_HEADERS += \
 endif
 
 if ENABLE_DOUBLE
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/mblas_double.h \
     include/mlapack_double.h \
     include/mutils_double.h
 endif
 
 if ENABLE_LONGDOUBLE
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
      include/mblas_longdouble.h \
      include/mlapack_longdouble.h \
      include/mutils_longdouble.h
 endif
 
 if ENABLE___FLOAT128
-mpack_include_HEADERS += \
+mlapack_include_HEADERS += \
     include/mblas___float128.h \
     include/mpfr___float128.h \
     include/mlapack___float128.h \

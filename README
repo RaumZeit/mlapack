@@ -1,10 +1,31 @@
+[![GitHub release](https://img.shields.io/github/release/RaumZeit/mlapack.svg)](https://github.com/RaumZeit/mlapack/releases)
+[![Build Status](https://travis-ci.org/RaumZeit/mlapack.svg?branch=master)](https://travis-ci.org/RaumZeit/mlapack)
+[![Github All Releases](https://img.shields.io/github/downloads/RaumZeit/mlapack/total.svg)](https://github.com/RaumZeit/mlapack/releases)
+
+# MLAPACK
+
+This is a fork of the [MPACK](https://github.com/nakatamaho/mplapack)
+multiprecision linear algebra package.
+
+The only difference to its upstream version is that the package itself
+and several of its files have been renamed to from `mpack` to `mlapack`
+to circumvent conflicts with other packages names `mpack`. In particular,
+the `mpack` project name is not unique among Linux distributions. Most
+Linux distributions already provide an `mpack` or `libmpack` package
+that serves totally different purposes. The first provides tools for
+encoding/decoding MIME messages and the second is a small binary
+serialization/RPC library.
+
+
+## Description
+
 The MPACK is a multiprecision linear algebra package based on BLAS and LAPACK.
 This package is rewritten in C++, and supports several high precision
 libraries like GMP, MPFR and QD etc so that users can choose for user's
 convenience. The MPACK is a free software (2-clause BSD style license with
 original license by LAPACK).
 
-Acknowledgement:
+## Acknowledgement:
 
 This work has been supported by:
 The Special Postdoctoral Researchers' Program of RIKEN (2008, 2009)
